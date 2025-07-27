@@ -6,12 +6,12 @@ interface NotesHttpResponse {
     totalPages: number;
 }
 
-// axios.defaults.baseURL = 'https://notehub-public.goit.study/api/docs';
+axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
 // const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
 
 // отримати список нотаток
 export const fetchNotes = async (query: string, page: number): Promise<NotesHttpResponse> => {
-    axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
+    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = '/notes';
 
@@ -27,19 +27,21 @@ export const fetchNotes = async (query: string, page: number): Promise<NotesHttp
 }
 
 export const createNote = async(note: NewNote) => {
-    axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
+    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = '/notes';
 
-    const response = await axios.post(endPoint, note, { headers: { Authorization: `Bearer ${myKey}` } });
+    const response = await axios.post<Note>(endPoint, note, { headers: { Authorization: `Bearer ${myKey}` } });
     
     return response.data;
 }
 
 export const deleteNote = async(id: number) => {
-    axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
+    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = `/notes/${id}`;
 
-    await axios.delete(endPoint, { headers: { Authorization: `Bearer ${myKey}` } });
+    const response = await axios.delete<Note>(endPoint, { headers: { Authorization: `Bearer ${myKey}` } });
+
+    return response.data;
 }
