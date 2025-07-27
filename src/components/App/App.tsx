@@ -53,6 +53,9 @@ function App() {
       </header>
       {isError && <div>Error. Try again.</div>}
       {isLoading && <div> Data is loading ...</div>}
+      {isSuccess && data.notes.length === 0 && (
+        <div>Data not found. Please try other query.</div>
+      )}
       {data && data.notes.length > 0 && <NoteList notes={data.notes} />}
       {isModalOpen && (
         <Modal onClose={closeModal}>
