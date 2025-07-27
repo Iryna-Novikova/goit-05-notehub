@@ -7,11 +7,9 @@ interface NotesHttpResponse {
 }
 
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
-// const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
 
 // отримати список нотаток
 export const fetchNotes = async (query: string, page: number): Promise<NotesHttpResponse> => {
-    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = '/notes';
 
@@ -27,7 +25,6 @@ export const fetchNotes = async (query: string, page: number): Promise<NotesHttp
 }
 
 export const createNote = async(note: NewNote) => {
-    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = '/notes';
 
@@ -37,7 +34,6 @@ export const createNote = async(note: NewNote) => {
 }
 
 export const deleteNote = async(id: number) => {
-    // axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = `/notes/${id}`;
 
