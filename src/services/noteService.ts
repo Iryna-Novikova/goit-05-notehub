@@ -14,7 +14,7 @@ export const fetchNotes = async (query: string, page: number): Promise<NotesHttp
     const endPoint = '/notes';
 
     const params = {
-        search: query.trim() ? query.trim() : ' ',
+        search: query, /*uery.trim() ? query.trim() : ' ',*/
         page,
         perPage: 12,
     }
@@ -33,7 +33,7 @@ export const createNote = async(note: NewNote) => {
     return response.data;
 }
 
-export const deleteNote = async(id: number) => {
+export const deleteNote = async(id: string) => {
     const myKey = import.meta.env.VITE_NOTEHUB_TOKEN;
     const endPoint = `/notes/${id}`;
 
